@@ -17,14 +17,14 @@ console.log(person1.constructor == Person);
 console.log(person1.__proto__.__proto__) // Object {}
 console.log(person1.__proto__.__proto__.__proto__) // null
 
+// Student 的父类是 Person
+Student.prototype = new Person();
 // 原型链实现继承
 // 构造函数
 function Student(name,age) {
-    name = name
-    age = age
+    Student.prototype.name = name
     this.study = function() {alert("我在学习！") } 
 }
-Student.prototype = new Person();
 var student1 = new Student('zhangsan',15)
 student1.sayName()
 student1.study()
