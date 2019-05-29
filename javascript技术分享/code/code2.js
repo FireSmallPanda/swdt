@@ -1,4 +1,4 @@
-// 原型链
+// 原型链--------------------------------------
 // 构造函数
 function Person(name, age) {
     this.name = name;
@@ -28,3 +28,23 @@ Student.prototype = new Person();
 var student1 = new Student('zhangsan',15)
 student1.sayName()
 student1.study()
+
+// 强制类型转换--------------------------------------
+var str=123;
+var str1='123';
+console.log(typeof str);
+console.log(typeof str1);
+console.log(typeof String(str));
+console.log(typeof Number(str1));
+
+// 隐式转换 字符串拼接 == 运算符 逻辑运算
+
+console.log('11' < 4 ) //输出fals
+
+console.log('0'==0) //true 字符串转数字
+console.log(0==false) //true 布尔转数字
+
+console.log(20/'10') //2
+
+// === 用法
+console.log(0===false)

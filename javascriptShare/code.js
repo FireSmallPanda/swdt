@@ -28,3 +28,4 @@ function Student(name,age) {
 var student1 = new Student('zhangsan',15)
 student1.sayName()
 student1.study()
+
