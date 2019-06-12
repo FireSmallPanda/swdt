@@ -69,3 +69,19 @@ let filterListNew = filterList.filter(item =>  {
   } 
 })
 console.log(filterListNew)
+
+
+
+// 浏览器常用操作
+// 获取浏览器信息
+console.log(navigator.userAgent)
+// 获取浏览器宽高
+console.log(screen.width)
+console.log(screen.height)
+
+// location用法
+console.log(location.href)
+console.log(location.protocol)
+console.log(location.pathname)
+console.log(location.search)
+console.log(location.hash)
