@@ -14,7 +14,8 @@
     </div>
     <script>
        let dom =  document.getElementById("clickMe")
-        dom.addEventListener("click",function(){
+       // false 不冒泡
+       dom.addEventListener("click",function(){
 
             alert("点击了 点击我")
         },false)
