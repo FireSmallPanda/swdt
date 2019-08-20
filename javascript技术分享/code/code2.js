@@ -10,9 +10,9 @@ function Person(name, age) {
 var person1 = new Person('Zaxlct', 28);
 var person2 = new Person('Mick', 23);
 // _proto_ 隐式原型(所有的引用类型) prototype 显示原型(所有的函数)
-console.log(Person.prototype == person1.__proto__)
+console.log(Person.prototype == person1.__proto__) // true
 // 判断 Person 是不是 person1的构造函数
-console.log(person1.constructor == Person);
+console.log(person1.constructor == Person); // true
 // 链
 console.log(person1.__proto__.__proto__) // Object {}
 console.log(person1.__proto__.__proto__.__proto__) // null
@@ -34,6 +34,7 @@ var str=123;
 var str1='123';
 console.log(typeof str);
 console.log(typeof str1);
+// 显示转换
 console.log(typeof String(str));
 console.log(typeof Number(str1));
 
