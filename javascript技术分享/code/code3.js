@@ -15,9 +15,9 @@ var name = "world";
 (function () {
 if (typeof name == 'undefined') {
 var name = 'yang';
-console.log('Hello ' + name)
+console.log('没有提升 ' + name)
 } else {
-console.log('Hello ' + name)
+console.log('提升了 ' + name)
 }
 })()
 
@@ -62,6 +62,8 @@ function self(){
 　　return f2;
 }
 var result = self();
-console.log(result());
+console.log(
+    
+    ());
 
 // 闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。    　　
