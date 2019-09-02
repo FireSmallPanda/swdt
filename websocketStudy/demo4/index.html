@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Echo Test</h1>
+    <input id="sendTxt"  type="text" />
+    <button id="sendBtn">发送消息</button>
+    <div id="recv"></div>
+    <script type="text/javascript" >
+        var websocket = new WebSocket("ws://localhost:3000/")
+        // 打开时
+        websocket.onopen = function(){
+            console.log("websocket open")
+            // 按钮按下时
+            document.getElementById("sendBtn").onclick = function(){
+                var txt = document.getElementById("sendTxt").value
+                // 有内容才发送
+                if(!!txt){
+                    websocket.send(txt)
+                    // 输入内容设空
+                    document.getElementById("sendTxt").value = ""
+                }else{
+                    alert("请输入发送内容")
+                }
+                
+            }
+        }
+        /**
+         * 显示消息*/
+        function showMessage(data,type){
+            var div = document.createElement("div")
+            div.innerHTML = data
+            if(type==="leave"){
+                div.style.color = "red"
+            }else if(type==="enter"){
+                div.style.color = "green"
+            }else{
+                div.style.color = "black"
+            }
+
+            document.body.appendChild(div)
+        }
+        // 关闭时
+        websocket.onclose = function(){
+            console.log("websocket close")
+        }
+        // 发送消息时
+        websocket.onmessage = function(e){
+            var mes = JSON.parse(e.data)
+            showMessage(mes.data,mes.type)
+        }
+        
+    </script>
+</body>
+</html>
