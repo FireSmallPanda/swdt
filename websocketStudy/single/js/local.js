@@ -7,10 +7,10 @@ var Local = function(){
             gameDiv: document.getElementById('game'),
             nextDiv: document.getElementById('next')
         }
+        game = new Game();
+        game.init(doms);
     }
-    game = new Game();
-    game.init(doms);
+    
     // 导出API 
-    this.start = start
-    // 11.58
+    this.start = start;
 }
