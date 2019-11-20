@@ -1,0 +1,19 @@
+.box{
+    height: 100px;
+    width: 100px;
+    background-color: black;
+}
+.demo-1{
+    /*linear 匀速 ease 提速*/ 
+    transition: width 2s linear;
+}
+.demo-1:hover{
+    width: 500px;
+}
+/*transform 使用*/
+.demo-2{
+    transition: transform 1s case-out;
+}
+.demo-2:hover{
+    transform: rotate(45deg);
+}
