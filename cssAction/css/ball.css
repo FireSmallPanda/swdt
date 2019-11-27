@@ -1,0 +1,23 @@
+.box{
+    height: 100px;
+    width: 100px;
+    background-color: black;
+}
+.ball{
+    margin: 40px auto;
+    border-radius: 50%;
+    animation: jump 1s cubic-bezier(0.41, -0.04, 0.93, 0.29) infinite;
+}
+@keyframes jump{
+    0%{
+        transform:  translateY(0px);
+    }
+    90%{
+        transform:  translateY(200px);
+        clip-path: ellipse(50% 50% at 50% 50%);
+    }
+    100%{
+        transform:  translateY(210px);
+        clip-path: ellipse(50% 42% at 50% 48%);
+    }
+}
