@@ -1,24 +1,24 @@
 // 变量提升 https://www.cnblogs.com/guanhuachen/p/6038957.html
 var a='hello world';
 var a;
-console.log(a); 
+console.log(a); // hello world
 
 // js会把变量的声明提升到上面
 var a;
 console.log(a);
-a='hello world';
+a='hello world'; // hello world
 
 // 上下代码相等 同样的比方说
 
-
+// 是匿名函数，主要利用函数内的变量作用域，避免产生全局变量，影响整体页面环境，增加代码的兼容性。
 var name = "world";
 (function () {
-if (typeof name == 'undefined') {
-var name = 'yang';
-console.log('没有提升 ' + name)
-} else {
-console.log('提升了 ' + name)
-}
+    if (typeof name == 'undefined') {
+        var name = 'yang';
+        console.log('没有提升 ' + name) // 走这里
+    } else {
+        console.log('提升了 ' + name)
+    }
 })()
 
 var name = "world";
@@ -62,8 +62,6 @@ function self(){
 　　return f2;
 }
 var result = self();
-console.log(
-    
-    ());
+console.log(result());
 
 // 闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。    　　
