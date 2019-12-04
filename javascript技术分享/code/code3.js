@@ -46,7 +46,7 @@ let 阻止变量提升  参考文档：https://blog.csdn.net/qq_40713392/article
 比如，for(){}循坏，function(){}，if(){}语句等，都满足。
 */
 let a = "hey I am outside";
-if(true){
+if (true) {
     // 此处存在暂时性死区
     console.log(a);//Uncaught ReferenceError: a is not defined
     let a = "hey I am inside";
@@ -59,10 +59,10 @@ const b = 2;
 
 
 //不存在变量提升，因此块级作用域外层无法访问
-if(true){
-	var bar = "bar";
-	let baz = "baz";
-	const qux = "qux";
+if (true) {
+    var bar = "bar";
+    let baz = "baz";
+    const qux = "qux";
 }
 console.log(bar);//bar
 console.log(baz);//baz is not defined
@@ -73,24 +73,83 @@ console.log(qux);//qux is not defined
 // 闭包 参考文档：https://www.cnblogs.com/duanlianjiang/p/5036671.html
 
 
+// 1.作用域
+// ----
+var n = 999;
 
+function f1() {
 
+    console.log(n);
 
-
-function self() {
-    var _say = "勤能补拙"
 }
-console.log(_say)
-// 闭包实现
-function self() {
-    var _say = "勤能补拙"
+
+f1();　　//999
+// ----- 
+function f1() {
+
+    var n = 999;
+
+}
+
+console.log(n);　　//error
+
+// 出于种种原因，我们有时候需要得到函数内的局部变量。但是，前面已经说过了，正常情况下，这是办不到的，只有通过变通方法才能实现。
+function f1() {
+
+    n = 999;
+
     function f2() {
-        return _say
+
+        console.log(n);　　//999
 
     }
-    return f2;
-}
-var result = self();
-console.log(result());
+    f2()
 
-// 闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。    　　
+}
+f1()
+// --- 
+function f1() {
+
+    n = 999;
+
+    function f2() {
+
+        console.log(n);
+
+    }
+
+    return f2;
+
+}
+
+var result = f1();　　//返回的是f2函数
+
+result();　　//999
+// 闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。
+function f1(){
+
+        var n = 999;
+        console.log('赋值全局方法nadd')
+    　　nAdd = function(){
+    
+    　　　　n += 1;
+    
+    　　}
+    
+    　　function f2(){
+    
+    　　　　console.log(n);
+    
+    　　}
+    
+    　　return f2;
+    
+    }
+    
+    var result = f1();
+    
+    result();　　//从函数外部通过闭包f2获取到函数f1内部局部变量的值 999
+    nAdd();　　//从函数外部通过闭包修改局部变量n的值
+    result();　　//再次通过闭包f2获取到函数f1内部局部变量的值 1000
+// 在这段代码中，result实际上就是闭包f2函数。它一共运行了两次，第一次的值是999，第二次的值是1000。
+// 这证明了，函数f1中的局部变量n 一直保存在内存中，并没有在f1调用后被自动清除。
