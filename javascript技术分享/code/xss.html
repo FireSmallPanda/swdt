@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <title>CSRF SHOW</title>
+</head>
+
+<body>
+    <p>这是一个正常的网页</p>
+    <!--使用iframe防止页面跳转-->
+    <form name="form1" action="http://localhost:3000/helloController/search?name=<script>alert('hey!')</script>" method="get"">
+
+        <input type="submit" value="点击领红包">
+    </form>
+    <table border="1">
+        <tr>
+            <th>
+                姓名<!-- <script>window.location.href='http://www.baidu.com';</script> -->
+            </th>
+            <th>
+                分数<!-- <script>window.location.href='http://www.baidu.com';</script> -->
+            </th>
+        </tr>
+        <tr>
+            <td>
+                张三<!-- <script>window.location.href='http://www.baidu.com';</script> -->
+            </td>
+            <td>
+                556<!-- <script>window.location.href='http://www.baidu.com';</script> -->
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
